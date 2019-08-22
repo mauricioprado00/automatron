@@ -53,6 +53,7 @@ RUN export DEBIAN_FRONTEND=noninteractive \
   && apt install --no-install-recommends --no-install-suggests -y \
     imagemagick \
     xdotool \
+    xclip \
   # Remove obsolete files:
   && apt-get autoremove  \
   && apt-get clean \
