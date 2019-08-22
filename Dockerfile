@@ -45,6 +45,24 @@ ENV DISPLAY :0
 
 # ENTRYPOINT ["entrypoint"]
 
+#
+# Install tools required for automation
+#
+RUN export DEBIAN_FRONTEND=noninteractive \
+  && apt-get update \
+  && apt install --no-install-recommends --no-install-suggests -y \
+    imagemagick \
+    xdotool \
+  # Remove obsolete files:
+  && apt-get autoremove  \
+  && apt-get clean \
+  && rm -rf \
+    /tmp/* \
+    /usr/share/doc/* \
+    /var/cache/* \
+    /var/lib/apt/lists/* \
+    /var/tmp/*
+
 
 #
 # Chromedriver Dockerfile
